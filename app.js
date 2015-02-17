@@ -1,6 +1,6 @@
 
 /**
- * Brioche
+ * Basic static file server
  */
 var path     = require('path'),
     express  = require('express'),
