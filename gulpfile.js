@@ -55,7 +55,7 @@ gulp.task('scripts', ['jshint'], function () {
 
     return browserify({ entries: './src/scripts/app.js', debug: true })
         .bundle()
-        .pipe(source('tortilla.js'))
+        .pipe(source('wax.js'))
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
             .pipe(gulpif(argv.production, uglify()))

@@ -1,10 +1,13 @@
 
+'use strict';
+
 /**
  * Smash targets below this line
  * -----------------------------
  */
 
-var Vec = require('./modules/Vec');
+var Vec = require('./modules/Vec'),
+    $   = require('jquery');
 
 (function(win, doc, c) {
 
@@ -76,7 +79,7 @@ var Vec = require('./modules/Vec');
         c.height = h;
         window.requestAnimationFrame(render);
     }
-    
+
     $(init);
 
 })(window,document,document.querySelectorAll('canvas')[0]);

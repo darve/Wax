@@ -11,6 +11,8 @@ body, html {
 	width: 100%;
 	height: 100%;
 	font-family: sans-serif;
+	margin: 0;
+	padding: 0;
 }
 
 .section, .inner {
@@ -21,4 +23,22 @@ body, html {
 
 .inner {
     max-width: 1080px;
+}
+
+canvas {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    image-rendering: optimizeSpeed;
+    -webkit-interpolation-mode: nearest-neighbor;
+    z-index: 10;
+
+    &.nocursor {
+        cursor: none;
+    }
 }
