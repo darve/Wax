@@ -8,7 +8,7 @@ module.exports = {
   "browser": true,
 
   // Define globals exposed by jQuery.
-  "jquery": true,
+  // "jquery": true,
 
   // Define globals exposed by Node.js.
   "node": true,
