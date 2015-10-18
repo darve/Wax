@@ -1,8 +1,8 @@
 {
-  "name": "Tortilla",
+  "name": "Wax",
   "version": "0.0.1",
-  "description": "Gulp / Angular / Browserify boilerplate",
-  "repository": "https://github.com/darve/tortilla.git",
+  "description": "Barebones Gulp / Browserify / Canvas boilerplate",
+  "repository": "https://github.com/darve/wax.git",
   "author": "David Woollard <dave@darve.co.uk>",
   "main": "app.js",
   "browser": {
@@ -10,10 +10,13 @@
   },
   "dependencies": {
     "express": "~4.13.3",
-    "body-parser": "~1.14.1"
+    "body-parser": "~1.14.1",
+    "tap-bail": "0.0.0",
+    "tap-difflet": "~0.4.0"
   },
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "tape tests/tape/**/*.js | tap-bail | tap-difflet"
   },
   "devDependencies": {
     "browserify": "~11.2.0",

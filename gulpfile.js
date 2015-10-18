@@ -101,7 +101,7 @@ gulp.task('sass', function() {
  */
 gulp.task('test', function() {
 
-    return gulp.src('./tests/*.js')
+    return gulp.src('./tests/tape/*.js')
         .pipe(tape({
             reporter: tap()
         }));
