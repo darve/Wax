@@ -6,7 +6,8 @@
   "author": "David Woollard <dave@darve.co.uk>",
   "main": "app.js",
   "browser": {
-    "jquery": "./src/vendor/jquery-v1.10.2.min.js"
+    "jquery": "./src/vendor/jquery-v1.10.2.min.js",
+    "pixi": "./src/vendor/pixi.js"
   },
   "dependencies": {
     "express": "~4.13.3",

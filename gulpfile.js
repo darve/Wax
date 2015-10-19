@@ -55,7 +55,7 @@ require('es6-promise').polyfill();
  */
 gulp.task('scripts', ['jshint'], function () {
 
-    return browserify({ entries: './src/scripts/app.js', debug: true })
+    return browserify({ entries: './src/scripts/app.js', noParse: ['./src/vendor/pixi.js'], debug: true })
         .bundle()
         .pipe(source('wax.js'))
         .pipe(buffer())

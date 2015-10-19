@@ -6,12 +6,14 @@
  * -----------------------------
  */
 
-var Vec = require('./modules/Vec'),
-    $   = require('jquery');
+var Vec     = require('./modules/Vec'),
+    PIXI    = require('../vendor/pixi.js'),
+    $       = require('jquery');
 
 (function(win, doc, c) {
 
-    var cx = c.getContext('2d'),
+    var stage,
+        renderer,
         w = win.innerWidth,
         h = win.innerHeight,
 
@@ -71,12 +73,13 @@ var Vec = require('./modules/Vec'),
     }
 
     function render(){
+        renderer.render(stage);
         window.requestAnimationFrame(render);
     }
 
     function init() {
-        c.width = w;
-        c.height = h;
+        stage = new PIXI.Container();
+        renderer = new PIXI.WebGLRenderer(w, h, { view: c, backgroundColor: 0xDDDDDD, antialias: true });
         window.requestAnimationFrame(render);
     }
 
