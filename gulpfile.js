@@ -36,6 +36,8 @@ var gulp            = require('gulp'),
     // Reporter used by the test runner
     tap             = require('tap-colorize'),
 
+    run             = require('gulp-run'),
+
     // These are used to perform tasks differently depending on the args
     argv            = require('yargs').argv,
     gulpif          = require('gulp-if'),
@@ -63,6 +65,12 @@ gulp.task('scripts', ['jshint'], function () {
             .pipe(gulpif(argv.production, sourcemaps.write('./')))
             .on('error', gutil.log)
             .pipe(gulp.dest('./app/assets/scripts'));
+});
+
+
+gulp.task('serve', function() {
+    run('node app.js').exec();
+    console.log('Express server running on port 3000');
 });
 
 
@@ -118,7 +126,7 @@ gulp.task('build', ['jshint', 'test', 'sass', 'scripts']);
 /**
  *  Watch our source files and trigger a build when they change
  */
-gulp.task('watch', function() {
+gulp.task('watch', ['serve'], function() {
 
     gulp.watch([
         './src/scripts/**/*.js',

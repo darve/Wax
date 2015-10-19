@@ -15,7 +15,7 @@
     "tap-difflet": "~0.4.0"
   },
   "scripts": {
-    "start": "node app.js",
+    "start": "node app.js && gulp watch",
     "test": "tape tests/tape/**/*.js | tap-bail | tap-difflet"
   },
   "devDependencies": {
@@ -37,6 +37,7 @@
     "tape": "~4.2.1",
     "vinyl-buffer": "~1.0.0",
     "vinyl-source-stream": "~1.1.0",
-    "yargs": "^3.27.0"
+    "yargs": "^3.27.0",
+    "gulp-run": "~1.6.11"
   }
 }
