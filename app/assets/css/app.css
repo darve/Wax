@@ -75,8 +75,6 @@ canvas {
   height: 100%;
   margin: 0;
   padding: 0;
-  image-rendering: optimizeSpeed;
-  -webkit-interpolation-mode: nearest-neighbor;
   z-index: 10; }
   canvas.nocursor {
     cursor: none; }

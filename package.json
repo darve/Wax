@@ -7,7 +7,7 @@
   "main": "app.js",
   "browser": {
     "jquery": "./src/vendor/jquery-v1.10.2.min.js",
-    "pixi": "./src/vendor/pixi.js"
+    "pixi": "./src/vendor/pixi.min.js"
   },
   "dependencies": {
     "express": "~4.13.3",

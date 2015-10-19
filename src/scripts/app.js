@@ -7,7 +7,7 @@
  */
 
 var Vec     = require('./modules/Vec'),
-    PIXI    = require('../vendor/pixi.js'),
+    PIXI    = require('pixi'),
     $       = require('jquery');
 
 (function(win, doc, c) {
@@ -16,6 +16,8 @@ var Vec     = require('./modules/Vec'),
         renderer,
         w = win.innerWidth,
         h = win.innerHeight,
+
+        graphics = new PIXI.Graphics(),
 
         // Some rad colours, should we need any.
         colours = [
@@ -44,10 +46,6 @@ var Vec     = require('./modules/Vec'),
             '#656d78',
             '#434a54'
         ];
-
-    cx.lineWidth = 1;
-    cx.fillStyle = 0x555555;
-    cx.strokeStyle = 0x555555;
 
     function randomColour() {
         return colours[Math.floor(Math.random() * colours.length)];
@@ -80,6 +78,21 @@ var Vec     = require('./modules/Vec'),
     function init() {
         stage = new PIXI.Container();
         renderer = new PIXI.WebGLRenderer(w, h, { view: c, backgroundColor: 0xDDDDDD, antialias: true });
+
+        // Add some bollocks to prove that it works.
+        graphics.lineStyle(10, 0xFF0000, 0.8);
+        graphics.beginFill(0xFF700B, 1);
+        graphics.moveTo(210,300);
+        graphics.lineTo(450,320);
+        graphics.lineTo(570,350);
+        graphics.quadraticCurveTo(600, 0, 480,100);
+        graphics.lineTo(330,120);
+        graphics.lineTo(410,200);
+        graphics.lineTo(210,300);
+        graphics.endFill();
+        stage.addChild(graphics);
+
+        // Start the rendering loop wahey oh yeah
         window.requestAnimationFrame(render);
     }
 

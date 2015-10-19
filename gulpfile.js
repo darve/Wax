@@ -55,7 +55,7 @@ require('es6-promise').polyfill();
  */
 gulp.task('scripts', ['jshint'], function () {
 
-    return browserify({ entries: './src/scripts/app.js', noParse: ['./src/vendor/pixi.js'], debug: true })
+    return browserify({ entries: './src/scripts/app.js', noParse: ['./src/vendor/pixi.min.js'], debug: true })
         .bundle()
         .pipe(source('wax.js'))
         .pipe(buffer())
@@ -88,7 +88,7 @@ gulp.task('jshint', function() {
 /**
  * This task compiles, nay transforms my sass into a hard
  * shiny peg of truth (CSS). Compiles scss files for dev.
- * Minifies if this task is run with the productiona argument.
+ * Minifies if this task is run with the production argument.
  */
 gulp.task('sass', function() {
 
