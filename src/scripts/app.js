@@ -77,7 +77,11 @@ var Vec     = require('./modules/Vec'),
 
     function init() {
         stage = new PIXI.Container();
-        renderer = new PIXI.WebGLRenderer(w, h, { view: c, backgroundColor: 0xDDDDDD, antialias: true });
+        renderer = new PIXI.WebGLRenderer(w, h, { 
+            view: c, 
+            backgroundColor: 0xDDDDDD, 
+            antialias: true 
+        });
 
         // Add some bollocks to prove that it works.
         graphics.lineStyle(10, 0xFF0000, 0.8);
