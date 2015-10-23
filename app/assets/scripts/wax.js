@@ -22,53 +22,34 @@ var Vec     = require('./modules/Vec'),
 
         // Some rad colours, should we need any.
         colours = [
-            '#ed5565',
-            '#da4453',
-            '#fc6e51',
-            '#e9573f',
-            '#ffce54',
-            '#fcbb42',
-            '#a0d468',
-            '#8cc152',
-            '#48cfad',
-            '#37bc9b',
-            '#4fc1e9',
-            '#3bafda',
-            '#5d9cec',
-            '#4a89dc',
-            '#ac92ec',
-            '#967adc',
-            '#ec87c0',
-            '#d770ad',
-            '#f5f7fa',
-            '#e6e9ed',
-            '#ccd1d9',
-            '#aab2bd',
-            '#656d78',
-            '#434a54'
+            0xed5565,
+            0xda4453,
+            0xfc6e51,
+            0xe9573f,
+            0xffce54,
+            0xfcbb42,
+            0xa0d468,
+            0x8cc152,
+            0x48cfad,
+            0x37bc9b,
+            0x4fc1e9,
+            0x3bafda,
+            0x5d9cec,
+            0x4a89dc,
+            0xac92ec,
+            0x967adc,
+            0xec87c0,
+            0xd770ad,
+            0xf5f7fa,
+            0xe6e9ed,
+            0xccd1d9,
+            0xaab2bd,
+            0x656d78,
+            0x434a54
         ];
 
     function randomColour() {
         return colours[Math.floor(Math.random() * colours.length)];
-    }
-
-    function dot(x,y,r, c){
-        cx.translate(x, y);
-        cx.strokeStyle = c;
-        cx.fillStyle = c;
-        cx.beginPath();
-        cx.arc(0, 0, r*2, 0, 2 * Math.PI, false);
-        cx.closePath();
-        cx.fill();
-        cx.setTransform(1, 0, 0, 1, 0, 0);
-    }
-
-    function line(x1, y1, x2, y2, c) {
-        cx.strokeStyle = c;
-        cx.beginPath();
-        cx.moveTo(x1, y1);
-        cx.lineTo(x2, y2);
-        cx.stroke();
     }
 
     function render(){
@@ -77,20 +58,22 @@ var Vec     = require('./modules/Vec'),
     }
 
     function init() {
-        stage = new PIXI.Container();
-        renderer = new PIXI.WebGLRenderer(w, h, { view: c, backgroundColor: 0xDDDDDD, antialias: true });
 
-        // Add some bollocks to prove that it works.
-        graphics.lineStyle(10, 0xFF0000, 0.8);
-        graphics.beginFill(0xFF700B, 1);
-        graphics.moveTo(210,300);
-        graphics.lineTo(450,320);
-        graphics.lineTo(570,350);
-        graphics.quadraticCurveTo(600, 0, 480,100);
-        graphics.lineTo(330,120);
-        graphics.lineTo(410,200);
-        graphics.lineTo(210,300);
-        graphics.endFill();
+        stage = new PIXI.Container();
+        renderer = new PIXI.WebGLRenderer(w, h, {
+            view: c,
+            backgroundColor: 0xDDDDDD,
+            antialias: true
+        });
+
+        // Draw some bollocks to prove that it works.
+        for ( var i = 1, l = 8; i <= l; i++ ) {
+            graphics.lineStyle(0);
+            graphics.beginFill(colours[i], 0.1);
+            graphics.drawCircle(w/2, h/2, i * 40);
+            graphics.endFill();
+        }
+
         stage.addChild(graphics);
 
         // Start the rendering loop wahey oh yeah
@@ -100,6 +83,7 @@ var Vec     = require('./modules/Vec'),
     $(init);
 
 })(window,document,document.querySelectorAll('canvas')[0]);
+
 },{"./modules/Vec":2,"jquery":3,"pixi":4}],2:[function(require,module,exports){
 
 'use strict';

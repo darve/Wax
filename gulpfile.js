@@ -20,8 +20,10 @@ var gulp            = require('gulp'),
     // Used for modular javascript development
     browserify      = require('browserify'),
 
-    // Used by babelify
+    // Use conventional text streams at the start of your gulp or vinyl pipelines
     source          = require('vinyl-source-stream'),
+
+    // Converts streaming vinyl files to use buffers
     buffer          = require('vinyl-buffer'),
 
     // Used for generating sourcemaps of minified javascript files.
@@ -35,8 +37,6 @@ var gulp            = require('gulp'),
 
     // Reporter used by the test runner
     tap             = require('tap-colorize'),
-
-    run             = require('gulp-run'),
 
     // These are used to perform tasks differently depending on the args
     argv            = require('yargs').argv,
@@ -60,17 +60,11 @@ gulp.task('scripts', ['jshint'], function () {
         .pipe(source('wax.js'))
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
-            .pipe(gulpif(argv.production, uglify()))
-            .pipe(gulpif(argv.production, rename({suffix: '.min'})))
-            .pipe(gulpif(argv.production, sourcemaps.write('./')))
-            .on('error', gutil.log)
-            .pipe(gulp.dest('./app/assets/scripts'));
-});
-
-
-gulp.task('serve', function() {
-    run('node app.js').exec();
-    console.log('Express server running on port 3000');
+        .pipe(gulpif(argv.production, uglify()))
+        .pipe(gulpif(argv.production, rename({suffix: '.min'})))
+        .pipe(gulpif(argv.production, sourcemaps.write('./')))
+        .on('error', gutil.log)
+        .pipe(gulp.dest('./app/assets/scripts'));
 });
 
 
@@ -120,13 +114,13 @@ gulp.task('test', function() {
  * This task is used to lint and minify everything and stick
  * it in a folder called 'prod'.
  */
-gulp.task('build', ['jshint', 'test', 'sass', 'scripts']);
+gulp.task('build', ['jshint', 'sass', 'scripts']);
 
 
 /**
  *  Watch our source files and trigger a build when they change
  */
-gulp.task('watch', ['serve'], function() {
+gulp.task('watch', function() {
 
     gulp.watch([
         './src/scripts/**/*.js',
