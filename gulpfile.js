@@ -1,3 +1,4 @@
+
 'use strict';
 
 var gulp            = require('gulp'),
@@ -55,7 +56,7 @@ require('es6-promise').polyfill();
  */
 gulp.task('scripts', ['jshint'], function () {
 
-    return browserify({ entries: './src/scripts/app.js', noParse: ['./src/vendor/pixi.min.js'], debug: true })
+    return browserify({ entries: './src/scripts/app.js', noParse: ['./src/vendor/pixi/pixi.min.js'], debug: true })
         .bundle()
         .pipe(source('wax.js'))
         .pipe(buffer())
