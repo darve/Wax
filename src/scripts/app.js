@@ -15,7 +15,7 @@ var
 
 (function(win, doc, c) {
 
-    var
+    let
         stage,
         renderer,
 
@@ -42,6 +42,7 @@ var
         }
 
     }
+
     function init() {
 
         stage = new PIXI.Container();

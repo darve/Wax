@@ -20,6 +20,8 @@
     "test": "tape tests/tape/**/*.js | tap-bail | tap-difflet"
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.18.0",
+    "babelify": "^7.3.0",
     "browserify": "~11.2.0",
     "es6-promise": "~3.0.2",
     "gulp": "~3.9.0",

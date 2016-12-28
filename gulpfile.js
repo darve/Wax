@@ -20,6 +20,7 @@ var gulp            = require('gulp'),
 
     // Used for modular javascript development
     browserify      = require('browserify'),
+    babelify         = require('babelify'),
 
     // Use conventional text streams at the start of your gulp or vinyl pipelines
     source          = require('vinyl-source-stream'),
@@ -57,6 +58,7 @@ require('es6-promise').polyfill();
 gulp.task('scripts', ['jshint'], function () {
 
     return browserify({ entries: './src/scripts/app.js', noParse: ['./src/vendor/pixi/pixi.min.js'], debug: true })
+        .transform(babelify, { presets: ['es2015']})
         .bundle()
         .pipe(source('wax.js'))
         .pipe(buffer())
